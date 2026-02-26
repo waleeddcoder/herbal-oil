@@ -28,6 +28,7 @@ class IngredientController extends Controller
             $data['image'] = $request->file('image')->store('ingredients', 'public');
         }
 
+        $data['is_active'] = $request->has('is_active');
         $data['sort_order'] = $data['sort_order'] ?? 0;
 
         Ingredient::create($data);
@@ -51,7 +52,7 @@ class IngredientController extends Controller
             $data['image'] = $request->file('image')->store('ingredients', 'public');
         }
 
-
+        $data['is_active'] = $request->has('is_active');
         $data['sort_order'] = $data['sort_order'] ?? 0;
         $ingredient->update($data);
         return redirect()->back()->with('success', 'Ingredient updated successfully.');
